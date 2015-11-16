@@ -9,13 +9,16 @@ app = Flask(__name__)
 # the '/' or 'root' URL.
 @app.route('/')
 def home():
-    # The output here is: __main__
-    # that is the 'name' of our running module
-    print(__name__)
-
     # This is what the browser will render in plain text
-    return 'Hello World!'
+    return '<p>Hello World!</p>'
 
+@app.route('/foo')
+def foo():
+    return 'Not found here'
+
+@app.route('/sum')
+def add():
+    return str(2 + 2)
 
 # Basically, "if we're not being imported as a module
 # execute the app.run() method, else do nothing"
