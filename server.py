@@ -18,9 +18,20 @@ def foo():
     return 'Not found here'
 
 
+# Example of how to set variables in the URL path
+# Here we're being specific to the type we expect (ints)
 @app.route('/sum/<int:x>/<int:y>', methods=['GET'])
 def add(x, y):
-    return str(x + y)
+    # We define function arguments 'x' and 'y' in the function signature
+    # because we've added the arguments to the path using the variable
+    # notation.
+
+    # Here, we use our variables to perform a math operation
+    answer = x + y
+
+    # We can't forget to return the answer as a string!
+    # Flask doesn't understand different return types yet.
+    return str(answer)
 
 # Basically, "if we're not being imported as a module
 # execute the app.run() method, else do nothing"
