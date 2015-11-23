@@ -7,18 +7,20 @@ app = Flask(__name__)
 # This is a decorator. This particular decorator tells our
 # Flask app to assign the function that it precedes to
 # the '/' or 'root' URL.
-@app.route('/')
+@app.route('/', methods=['GET'])
 def home():
     # This is what the browser will render in plain text
     return '<p>Hello World!</p>'
 
-@app.route('/foo')
+
+@app.route('/foo', methods=['GET'])
 def foo():
     return 'Not found here'
 
-@app.route('/sum')
-def add():
-    return str(2 + 2)
+
+@app.route('/sum/<int:x>/<int:y>', methods=['GET'])
+def add(x, y):
+    return str(x + y)
 
 # Basically, "if we're not being imported as a module
 # execute the app.run() method, else do nothing"
