@@ -13,9 +13,14 @@ def home():
     return '<p>Hello World!</p>'
 
 
-@app.route('/foo', methods=['GET'])
-def foo():
-    return 'Not found here'
+@app.route('/foo/<form>', methods=['GET'])
+def foo(form):
+    response = ''
+    if form == 'yes':
+        form = 'test'
+    if form == 'test':
+        response = 'unavailable'
+    return response
 
 
 # Example of how to set variables in the URL path
